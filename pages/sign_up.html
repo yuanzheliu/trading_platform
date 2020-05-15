@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <title>Sign Up Your GSM Account</title>
+    <script src="../scripts/sign_up.js"> </script>
+  </head>
+  <body>
+    <h2> Sign up your GSM Account</h2>
+    <HR>
+    <form name = signup>
+      <p nowrap>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required pattern = "^[a-zA-z][A-zA-z0-9-_]*$">
+        <red> (*) </red>
+        <br> <i> A username can only contains letters, numbers underscores(_) and hyphens(_), and it should start with a letter.</i>
+      </p>
+      <p nowarp>
+        <label for="email">Email address:</label>
+        <input type="email" id="email" name="email" required>
+        <red> (*) </red>
+        <br> <i> Passwords must be longer than 8 characters.</i>
+      </p>
+      <p nowarp>
+        <label for="pwd">Password:</label>
+        <input type="password" id="pwd" name="pwd" required>
+        <red> (*) </red>
+      </p>
+
+      <p nowarp>
+        <label for="cpwd">Confirm password:  </label>
+        <input type="password" id="cpwd" name="cpwd" required>
+        <red> (*) </red>
+      </p>
+
+      <p>
+        <label for="tel">Phone number:</label>
+        <input type="tel" id="tel" name="tel">
+      </p>
+
+      <p style="color:#FF0000";>*: Mandatory</p>
+      <p>
+        <input type="submit" value = "Submit" onclick = "validateForm()" id = 'button'>
+      </p>
+      <p name = "errors" style ="color:#FF0000"> </p>
+  </form>
+
+  
+  </body>
+</html>

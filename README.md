@@ -1,1 +1,2 @@
-# Trading platform
+# Online supermarket
+An onlien supermaret called GSM
