@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../styles/colors.css">
     <title>Sign Up Your GSM Account</title>
+    <script src="../scripts/jquery-1.7.1.min.js"></script>
     <script src="../scripts/sign_up.js"> </script>
+
   </head>
   <body>
     <h2> Sign up your GSM Account</h2>
@@ -12,25 +14,25 @@
     <form name = signup>
       <p nowrap>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required pattern = "^[a-zA-z][A-zA-z0-9-_]*$">
+        <input type="text" id="username" name="username" required pattern = "^[a-zA-z][A-zA-z0-9-_]*$" value = 'yzliu95'>
         <red> (*) </red>
         <br> <i> A username can only contains letters, numbers underscores(_) and hyphens(_), and it should start with a letter.</i>
       </p>
       <p nowarp>
         <label for="email">Email address:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required value ='yzliu95@gmail.com'>
         <red> (*) </red>
         <br> <i> Passwords must be longer than 8 characters.</i>
       </p>
       <p nowarp>
         <label for="pwd">Password:</label>
-        <input type="password" id="pwd" name="pwd" required>
+        <input type="password" id="pwd" name="pwd" required value = '11111111'>
         <red> (*) </red>
       </p>
 
       <p nowarp>
         <label for="cpwd">Confirm password:  </label>
-        <input type="password" id="cpwd" name="cpwd" required>
+        <input type="password" id="cpwd" name="cpwd" required value = '11111111'>
         <red> (*) </red>
       </p>
 
@@ -45,7 +47,7 @@
       </p>
       <p name = "errors" style ="color:#FF0000"> </p>
   </form>
-
+  <span id="responsefield"></span>
   
   </body>
 </html>
