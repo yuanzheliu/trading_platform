@@ -3,7 +3,7 @@ import sys
 import tornado.web
 import tornado.ioloop
 sys.path.append('/src')
-from sql_models import Users
+from src.sql_models import Users
 
 class BaseHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
@@ -33,6 +33,10 @@ application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/test/", AjaxHandler),
     ])
+
+
+
+
 
 if __name__ == '__main__':
     application.listen(8888)
