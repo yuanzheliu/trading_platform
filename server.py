@@ -3,7 +3,7 @@ import sys
 import tornado.web
 import tornado.ioloop
 sys.path.append('/src')
-from src.sql_models import Users
+from src.sql_models import create_all, create_user
 
 class BaseHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
@@ -21,17 +21,21 @@ class MainHandler(BaseHandler):
 
 
 
-class AjaxHandler(BaseHandler):
+class SignUpHandler(BaseHandler):
     def post(self):
-        print("Post data received")
-        
-        
-        self.write(s)
+        print("Sign up data received")
+        args = json.loads(self.request.body)
+        result = None
+        if create_user(**args): 
+            result = json.dumps({"status" : True})
+        else:
+            result = json.dumps({"status" : False})
+        self.write(result)
         
 
 application = tornado.web.Application([
     (r"/", MainHandler),
-    (r"/test/", AjaxHandler),
+    (r"/signup/", SignUpHandler),
     ])
 
 
@@ -40,4 +44,5 @@ application = tornado.web.Application([
 
 if __name__ == '__main__':
     application.listen(8888)
+    create_all()
     tornado.ioloop.IOLoop.instance().start()

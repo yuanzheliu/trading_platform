@@ -30,12 +30,16 @@ function send_form(){
     alert("sending");
     $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:8888/test/',
+        url: 'http://127.0.0.1:8888/signup/',
         data: dataToSend,
-        dataType: 'JSON',
+        dataType: 'json',
         success: function(response){
             var res = eval(response);
-            alert(res.name);
+            if (res.status){
+                window.location.href="./sign_up_success.html";
+            } else {
+                alert("Signup failed");
+            }
             //console.log(res);
             //document.getElementById('response').setAttribute('value',res);
         },

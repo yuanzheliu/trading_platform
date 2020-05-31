@@ -7,15 +7,15 @@ class BaseModel(Model):
 
 class Users(BaseModel): 
     username = CharField(verbose_name = 'Username', max_length = 15, primary_key = True)
-    passwd = CharField(verbose_name = 'Password',max_length = 20)
+    password = CharField(verbose_name = 'Password',max_length = 20)
     email = CharField(verbose_name = 'Email', max_length = 25)
     phone = CharField(verbose_name = 'Phone', max_length = 11, null = True)
     # created_time = DateField(verbose_name = 'Member since')
     # last_login_time=DateTimeField(verbose_name = 'Last login')
 
-def create_user(username, passwd,email,phone = None): 
+def create_user(username, password,email,phone = None): 
     try:
-        Users.create(username=username,passwd = passwd, email = email, phone = phone)
+        Users.create(username=username,password = password, email = email, phone = phone)
         return True
     except:
         return False
@@ -24,7 +24,11 @@ def create_all():
     '''
     Initialize database. This function should only be called once. 
     '''
-    Users.create_table()
+    try:
+        Users.create_table()
+    except:
+        return
+
 
 if __name__ == '__main__':
     create_all()
