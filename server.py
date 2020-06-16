@@ -1,3 +1,4 @@
+import os
 import json
 import sys
 import tornado.web
@@ -31,12 +32,19 @@ class SignUpHandler(BaseHandler):
         else:
             result = json.dumps({"status" : False})
         self.write(result)
+
+class SignUpPageHandler(BaseHandler):
+    def get(self):
+        self.render("pages/sign_up.html")
         
+settings = {
+    "static_path": os.path.join(os.path.dirname(__file__), "scripts")}
 
 application = tornado.web.Application([
     (r"/", MainHandler),
+    (r"sign_up.html",SignUpPageHandler),
     (r"/signup/", SignUpHandler),
-    ])
+    ], ** settings)
 
 
 

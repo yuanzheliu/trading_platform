@@ -13,6 +13,15 @@ class Users(BaseModel):
     # created_time = DateField(verbose_name = 'Member since')
     # last_login_time=DateTimeField(verbose_name = 'Last login')
 
+class Books(BaseModel):
+    title = CharField(verbose_name = 'Title', max_length = 30, primary_key = True)
+    price = FloatField(verbose_name = 'Price',constraints=[Check('price > 0')])
+    year = IntegerField(verbose_name= 'Year')
+    author = CharField(verbose_name = 'Author')
+    category = CharField(verbose_name= 'Category')
+    stock = IntegerField(Verbose_name = 'Stock')
+    publisher = CharField(verbose_name = 'Publisher')
+
 def create_user(username, password,email,phone = None): 
     try:
         Users.create(username=username,password = password, email = email, phone = phone)
